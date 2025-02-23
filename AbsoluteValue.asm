@@ -4,25 +4,33 @@ D=M
 @NON_NEGATIVE
 D;JGE          
 
+
 @R0
 D=M
-@temp
+@aads    
+M=0
+@32767
+D=A
+@aads
 M=D            
 
-@32767         
-D=A
-@temp
-D=D&M          
+@R0
+D=M
+@aads
+M=D& M         
+@aads
+D=M
 @NOT_MIN
 D;JNE          
 
 
-@temp
+@R0
 D=M
 @NOT_MIN
 D;JGE          
 
-
+@R0
+D=M
 @R1
 M=D            
 @R2
@@ -32,28 +40,27 @@ M=1
 @END
 0;JMP
 
-
-
+(NOT_MIN)
 @R0
 D=M
 @R1
-M=-D   
+M=-D           
 @R2
 M=1            
-M=0
+@R3
+M=0            
 @END
 0;JMP
 
 (NON_NEGATIVE)
-
 @R0
 D=M
 @R1
-M=D            
+M=D
 @R2
-M=0           
+M=0
 @R3
-M=0            
+M=0
 
 (END)
 @END
