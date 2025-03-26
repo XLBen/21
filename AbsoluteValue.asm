@@ -1,117 +1,40 @@
 @R0
 D=M
-@R9
+
+@POSITIVE
+D;JGE
+
+@R2
+M=1
+D=-D
+@OVERFLOW
+D;JLT
+
+@R1
 M=D
-@EVAL
+@R3
+M=0
+@END
 0;JMP
 
-(EVAL)
-    @R0
-    D=M
-    @R9
-    M=D
-    D=M
-    @POS
-    D;JGE
-    @R2
-    M=1
-    @0
-    D=A
-    @R4
-    M=D
-    @R9
-    D=M
-    D=-D
-    @R5
-    M=D
-    @AddWithOverflowCheck
-    0;JMP
+(OVERFLOW)
+@R3
+M=1
+@R0
+D=M
+@R1
+M=D
+@END
+0;JMP
 
-(POS)
-    @R2
-    M=0
-    @R9
-    D=M
-    @R1
-    M=D
-    @R3
-    M=0
-    @END
-    0;JMP
-
-(AddWithOverflowCheck)
-    @R4
-    D=M
-    @R7
-    M=D
-    @R5
-    D=M
-    @R8
-    M=D
-    @R7
-    D=M
-    @R8
-    D=D+M
-    @R4
-    M=D
-    @R7
-    D=M
-    @CHK_POS
-    D;JLT
-    @R8
-    D=M
-    @CHK_POS
-    D;JLT
-    @R4
-    D=M
-    @NOOVF_ADD
-    D;JGE
-    @R3
-    M=1
-    @RET_ADD
-    0;JMP
-(CHK_POS)
-    @R7
-    D=M
-    @CHK_NEG
-    D;JGE
-    @R8
-    D=M
-    @CHK_NEG
-    D;JGE
-    @R4
-    D=M
-    @NOOVF_ADD
-    D;JLT
-    @R3
-    M=1
-    @RET_ADD
-    0;JMP
-(CHK_NEG)
-    @NOOVF_ADD
-    0;JMP
-(NOOVF_ADD)
-    @R3
-    M=0
-(RET_ADD)
-    @R3
-    D=M
-    @CHK_OVF
-    D;JNE
-    @R4
-    D=M
-    @R1
-    M=D
-    @END
-    0;JMP
-(CHK_OVF)
-    @R9
-    D=M
-    @R1
-    M=D
-    @END
-    0;JMP
+(POSITIVE)
+@R1
+M=D
+@R2
+M=0
+@R3
+M=0
 
 (END)
-    @END
-    0;JMP
+@END
+0;JMP
