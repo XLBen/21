@@ -1,0 +1,14 @@
+@17
+D=A
+@R0
+D=D+M
+@R1
+D=D-M
+D=D-M
+D=D-M
+@R2
+M=D
+
+(END)
+@END
+0;JMP
