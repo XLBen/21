@@ -1,30 +1,77 @@
+    @R0
+    D=M
+    @R16
+    M=D         
+    @R1
+    D=M
+    @R17
+    M=D         
+    @R16
+    D=M
+    @R17
+    D=D+M
+    @R0
+    M=D         
+    @R16
+    D=M
+    @POS_OP1_CHECK
+    D;JGE
+    @R18
+    M=0       
+    @CHECK_OP2
+    0;JMP
+(POS_OP1_CHECK)
+    @R18
+    M=1       
+(CHECK_OP2)
+    @R17
+    D=M
+    @POS_OP2_CHECK
+    D;JGE
+    @R20
+    M=0       
+    @CHECK_RES
+    0;JMP
+(POS_OP2_CHECK)
+    @R20
+    M=1       
+(CHECK_RES)
+    @R0
+    D=M
+    @POS_RES_CHECK
+    D;JGE
+    @R22
+    M=0       
+    @OVERFLOW_DETECT
+    0;JMP
+(POS_RES_CHECK)
+    @R22
+    M=1       
+(OVERFLOW_DETECT)
+    @R18
+    D=M
+    @R20
+    D=D-M   
+    @NO_OVERFLOW
+    D;JNE   
+    @R18
+    D=M       
+    @R22
+    D=D-M   
+    @OVERFLOW
+    D;JNE   
+    @NO_OVERFLOW
+    0;JMP
 
-@R0
-D=M
-@R3
-M=!D       
+(OVERFLOW)
+    @R2
+    M=1     
+    @ADD_END
+    0;JMP
 
-@R1
-D=M
-@R4
-M=!D       
-
-@R0
-D=M
-@R4
-D=D&M      
-@R5
-M=D
-
-@R3
-D=M
-@R1
-D=D&M      
-@R5
-D=D|M      
-@R2
-M=D        
-
-(END)
-@END
-0;JMP
+(NO_OVERFLOW)
+    @R2
+    M=0     
+(ADD_END)
+    @R24
+    0;JMP 
