@@ -1,30 +1,31 @@
-(EvaluateExpression)
-    @R0
-    D=M
-    @NON_NEGATIVE
-    D;JGE         
-    @R0
-    D=M
-
-    @R0
-    D=M
-    @R1
-    M=-D        
-    @R2
-    M=1         
-    @R3
-    M=0         
-    @EVAL_END
-    0;JMP
-(NON_NEGATIVE)
-    @R0
-    D=M
-    @R1
-    M=D         
-    @R2
-    M=0         
-    @R3
-    M=0         
-(EVAL_END)
-    @R24
-    0;JMP 
+@R0
+D=M
+@POSITIVE
+D;JGE
+@R2
+M=1
+D=-D
+@OVERFLOW
+D;JLT
+@R1
+M=D
+@R3
+M=0
+@END
+0;JMP
+@R3
+M=1
+@R0
+D=M
+@R1
+M=D
+@END
+0;JMP
+@R1
+M=D
+@R2
+M=0
+@R3
+M=0
+@END
+0;JMP
