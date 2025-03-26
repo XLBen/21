@@ -17,14 +17,6 @@ M=0
 @END
 0;JMP
 
-(POSITIVE)
-@R1
-M=D
-@R2
-M=0
-@R3
-M=0
-
 (OVERFLOW)
 @R3
 M=1
@@ -34,6 +26,14 @@ D=M
 M=D
 @END
 0;JMP
+
+(POSITIVE)
+@R1
+M=D
+@R2
+M=0
+@R3
+M=0
 
 (END)
 @END
