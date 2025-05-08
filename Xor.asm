@@ -1,4 +1,3 @@
-Xor.asm
 @0 // Select R0
 D=!M // D = NOT(M) 
 
